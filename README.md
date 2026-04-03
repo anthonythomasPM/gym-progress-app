@@ -1,89 +1,34 @@
 # Gym Momentum
 
-A workout tracking app that helps you monitor exercise progress, detect stagnation, and stay on top of your training routine — built with React, TypeScript, and Lovable Cloud.
+A personal workout tracking app I designed and built to solve a problem I actually had: knowing *when* to push harder in the gym, not just *what* I did last session.
 
-## Key Features
+## The Problem
+Most gym trackers log your workouts. Few tell you when you've stopped progressing. I wanted a tool that proactively flags stagnation so I could make intentional decisions about increasing weight or reps.
 
-### 🏋️ Exercise Tracking
-- Track sets (reps × weight) per exercise, organized by workout groups (Push, Pull, Legs)
-- Automatic score calculation (`reps × weight` summed across sets)
-- Change log records every update with previous/new scores and diff
+## What I Built
+A web app that tracks exercise performance over time and uses a traffic-light system to surface stagnation alerts before they become bad habits.
 
-### 🚦 Stagnation Detection
-- Traffic-light system (green / orange / red) flags exercises that haven't been updated in a while to encourage challenging self with increased weight
-- Configurable thresholds: "Change Soon" and "Change ASAP" day counts
-- **Upcoming tab** shows a badge `[X | Y]` with color-coded ASAP (red) and Soon (orange) counts to alert user to approaching stagnation alert triggers
+**Core features:**
+- Set and rep tracking across Push, Pull, and Legs workout groups with automatic score calculation
+- Stagnation detection with configurable thresholds and color-coded urgency (green / orange / red)
+- Per-exercise progression charts ordered by most recently updated
+- Secure authentication with email verification, password reset, and row-level data isolation
 
-### 📈 History & Charts
-- Per-exercise line charts showing score progression over time
-- Charts ordered by most recently updated first
+## Product Decisions Worth Noting
+- **Configurable thresholds** rather than fixed alerts — different training styles have different cadences
+- **Badge system on the Upcoming tab** shows at-a-glance counts of urgent vs. soon alerts without requiring navigation
+- **Score as reps x weight** keeps progress comparable across set configurations
 
-### 🔐 Authentication & Security
-- Email/password sign-up and sign-in with email verification
-- Full password reset flow: "Forgot Password" → email link → `/reset-password` page
-- Inline error messaging with contextual reset link on invalid credentials
-- Row-Level Security (RLS) on all tables — users can only access their own data
+## Screenshots
 
-### ☁️ Cloud Persistence
-- All data stored in Lovable Cloud (powered by Supabase)
-- Data persists across deploys and code changes
-- Automatic seeding of default exercises for new users
-
-### 🎨 Design
-- Clean light theme with Space Grotesk + JetBrains Mono typography
-- Teal primary accent (`hsl(174, 72%, 38%)`) with semantic color tokens
-- Custom status colors: green for fresh, orange for stale, red for urgent
-- Fully responsive layout
-
-### Screenshots
-Main UI, showing workout and color coded alerts:
+Main UI with workout tracking and stagnation alerts:
 ![General UI screenshot](images/gym_progress_overview.png)
 
-A view of upcoming alerts:
+Upcoming alerts view:
 ![Upcoming alerts](images/gym_progress_upcoming.png)
 
-User settings, for triggering alerts in terms of number of days of stagnation:
+User-configurable alert settings:
 ![Settings](images/gym_progress_settings.png)
 
-## Tech Stack
-
-- **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui
-- **Backend:** Lovable Cloud (Supabase) — auth, database, RLS policies
-- **Charts:** Recharts
-- **Routing:** React Router v6
-
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── ExerciseCard.tsx    # Individual exercise with editable sets
-│   ├── ForecastTab.tsx     # Upcoming changes (stagnation alerts)
-│   ├── HistoryTab.tsx      # Change log with line charts
-│   ├── SettingsPanel.tsx   # Stagnation config + reset data
-│   └── NavLink.tsx         # Tab navigation link
-├── hooks/
-│   ├── useAuth.ts          # Auth state management
-│   └── useWorkoutData.ts   # CRUD operations + Supabase sync
-├── lib/
-│   ├── types.ts            # Interfaces, score calc, stagnation logic
-│   ├── initialData.ts      # Default seed exercises
-│   └── utils.ts            # Tailwind merge utility
-├── pages/
-│   ├── Index.tsx           # Main app shell with tab navigation
-│   ├── Auth.tsx            # Login / signup form
-│   ├── ForgotPassword.tsx  # Password reset request
-│   └── ResetPassword.tsx   # Set new password
-└── integrations/
-    └── supabase/           # Auto-generated client + types
-```
-
-## Database Schema
-
-| Table | Purpose |
-|-------|---------|
-| `exercises` | Exercise definitions with sets data (JSON), grouped by workout |
-| `change_log` | Timestamped score changes per exercise |
-| `stagnation_config` | Per-user thresholds for change alerts |
-
-All tables enforce RLS — users can only read, write, and delete their own rows.
+## Built With
+React, TypeScript, Tailwind CSS, Supabase (auth + database), Recharts
