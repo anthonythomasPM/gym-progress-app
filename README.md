@@ -17,6 +17,7 @@ A workout tracking app that helps you monitor exercise progress, detect stagnati
 ### 📈 History & Charts
 - Per-exercise line charts showing score progression over time
 - Charts ordered by most recently updated first
+
 ### 🔐 Authentication & Security
 - Email/password sign-up and sign-in with email verification
 - Full password reset flow: "Forgot Password" → email link → `/reset-password` page
@@ -33,6 +34,9 @@ A workout tracking app that helps you monitor exercise progress, detect stagnati
 - Teal primary accent (`hsl(174, 72%, 38%)`) with semantic color tokens
 - Custom status colors: green for fresh, orange for stale, red for urgent
 - Fully responsive layout
+
+### Screenshots
+![General UI screenshot](images/gym_progress_overview.png)
 
 ## Tech Stack
 
