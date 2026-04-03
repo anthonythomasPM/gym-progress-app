@@ -36,10 +36,13 @@ A workout tracking app that helps you monitor exercise progress, detect stagnati
 - Fully responsive layout
 
 ### Screenshots
+Main UI, showing workout and color coded alerts:
 ![General UI screenshot](images/gym_progress_overview.png)
 
+A view of upcoming alerts:
 ![Upcoming alerts](images/gym_progress_upcoming.png)
 
+User settings, for triggering alerts in terms of number of days of stagnation:
 ![Settings](images/gym_progress_settings.png)
 
 ## Tech Stack
