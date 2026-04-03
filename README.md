@@ -38,6 +38,10 @@ A workout tracking app that helps you monitor exercise progress, detect stagnati
 ### Screenshots
 ![General UI screenshot](images/gym_progress_overview.png)
 
+![Upcoming alerts](images/gym_progress_upcoming.png)
+
+![Settings](images/gym_progress_settings.png)
+
 ## Tech Stack
 
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui
